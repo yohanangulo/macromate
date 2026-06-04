@@ -1,4 +1,4 @@
-import { MealEntity } from '..'
+import { MealEntity } from '../../domain'
 
 export interface MealLocalDataSource {
   save: (meal: MealEntity) => Promise<void>

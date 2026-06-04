@@ -1,4 +1,5 @@
-import { MealEntity, MealLocalDataSource } from '@/core/meals/domain'
+import { MealEntity } from '@/core/meals/domain'
+import { MealLocalDataSource } from '@/core/meals/infrastructure'
 
 export class MealLocalDataSourceImpl implements MealLocalDataSource {
   async save(meal: MealEntity): Promise<void> {

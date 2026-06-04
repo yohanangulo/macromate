@@ -1,4 +1,5 @@
-import { MealEntity, MealLocalDataSource, MealRepository } from '../../domain'
+import { MealEntity, MealRepository } from '../../domain'
+import { MealLocalDataSource } from '../data-sources/meal-local-data-source'
 import { MealRemoteDataSource } from '../data-sources/http-meal-remote-data-source'
 
 export class OfflineFirstMealRepositoryImpl implements MealRepository {
