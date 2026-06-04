@@ -1,13 +1,16 @@
 import { colors, globalStyles } from '@/common/style/globals'
 import { AddMealOutputSchema, AddMealSchema, addMealSchema } from '@/core/meals/domain'
+import { addMeal } from '@/di/container'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { router } from 'expo-router'
 import { Controller, useForm } from 'react-hook-form'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 export default function AddMealScreen() {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<AddMealSchema, any, AddMealOutputSchema>({
     resolver: zodResolver(addMealSchema),
@@ -20,8 +23,14 @@ export default function AddMealScreen() {
     },
   })
 
-  const handleAddMeal = (data: AddMealSchema) => {
-    console.log(data)
+  const handleAddMeal = async (data: AddMealOutputSchema) => {
+    try {
+      await addMeal.execute(data)
+      reset()
+      router.navigate('/meals-screen')
+    } catch (e) {
+      Alert.alert('Error', 'Could not save the meal. Please try again.')
+    }
   }
 
   return (
