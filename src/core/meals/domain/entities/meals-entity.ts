@@ -15,6 +15,8 @@ export class MealEntity {
     protein,
     carbs,
     fat,
+    createdAt,
+    updatedAt,
   }: {
     id: string
     name: string
@@ -22,6 +24,8 @@ export class MealEntity {
     protein: number
     carbs: number
     fat: number
+    createdAt?: Date
+    updatedAt?: Date
   }) {
     this.id = id
     this.name = name
@@ -29,7 +33,7 @@ export class MealEntity {
     this.protein = protein
     this.carbs = carbs
     this.fat = fat
-    this.createdAt = new Date()
-    this.updatedAt = new Date()
+    this.createdAt = createdAt ?? new Date()
+    this.updatedAt = updatedAt ?? new Date()
   }
 }
