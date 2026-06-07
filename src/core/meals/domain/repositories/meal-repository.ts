@@ -5,5 +5,7 @@ export interface MealRepository {
 
   getAll: () => Promise<MealEntity[]>
 
+  getById: (id: string) => Promise<MealEntity | null>
+
   delete: (id: string) => Promise<void>
 }

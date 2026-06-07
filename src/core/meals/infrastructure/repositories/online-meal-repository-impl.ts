@@ -12,6 +12,10 @@ export class OnlineMealRepositoryImpl implements MealRepository {
     return this.mealRemoteDataSource.fetchAll()
   }
 
+  async getById(id: string): Promise<MealEntity | null> {
+    return null
+  }
+
   async delete(id: string): Promise<void> {
     await this.mealRemoteDataSource.delete(id)
   }
