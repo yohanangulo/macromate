@@ -8,9 +8,10 @@ type MealItemProps = {
   protein: number
   carbs: number
   fat: number
+  onDelete?: () => void
 }
 
-export default function MealItem({ id, name, calories, protein, carbs, fat }: MealItemProps) {
+export default function MealItem({ id, name, calories, protein, carbs, fat, onDelete }: MealItemProps) {
   const handleLongPress = () => {
     Alert.alert('Delete Meal', `Are you sure you want to delete "${name}"?`, [
       { text: 'Cancel', style: 'cancel' },
@@ -19,6 +20,7 @@ export default function MealItem({ id, name, calories, protein, carbs, fat }: Me
         style: 'destructive',
         onPress: async () => {
           await deleteMeal(id)
+          onDelete?.()
         },
       },
     ])

@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { router } from 'expo-router'
 import { Controller, useForm } from 'react-hook-form'
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function AddMealScreen() {
   const {
@@ -35,7 +36,7 @@ export default function AddMealScreen() {
   }
 
   return (
-    <View style={globalStyles.container}>
+    <SafeAreaView style={globalStyles.container}>
       <Text style={globalStyles.title}>Add Meal</Text>
 
       <Controller
@@ -48,6 +49,7 @@ export default function AddMealScreen() {
             value={value}
             style={styles.input}
             placeholder="Meal name"
+            autoCorrect={false}
             placeholderTextColor={colors.textSecondary}
           />
         )}
@@ -136,7 +138,7 @@ export default function AddMealScreen() {
       <TouchableOpacity style={styles.button} onPress={handleSubmit(handleAddMeal)}>
         <Text style={styles.buttonText}>Add Meal</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   )
 }
 

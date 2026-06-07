@@ -1,3 +1,4 @@
+import { Providers } from '@/common/providers/providers'
 import { colors } from '@/common/style/globals'
 import { db, expoDb } from '@/infrastructure/db/client'
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator'
@@ -20,13 +21,15 @@ export default function RootLayout() {
   if (!success) return <ActivityIndicator />
 
   return (
-    <Stack
-      screenOptions={{
-        headerStyle: { backgroundColor: colors.header },
-        headerTintColor: '#fff',
-      }}
-    >
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <Providers>
+      <Stack
+        screenOptions={{
+          headerStyle: { backgroundColor: colors.header },
+          headerTintColor: '#fff',
+        }}
+      >
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      </Stack>
+    </Providers>
   )
 }
