@@ -1,15 +1,28 @@
 import { dimens } from '@/common/dimens'
 import { globalStyles } from '@/common/style/globals'
+import { useWatchRecentMeals } from '@/hooks/meals/use-watch-recent-meals'
 import { Text, View } from 'react-native'
 import MealItem from './meal-item'
 
 export default function RecentMeals() {
+  const { meals } = useWatchRecentMeals()
   return (
-    <View style={{ marginTop: dimens.p7 }}>
+    <View style={{ marginTop: 30, paddingBottom: dimens.p4 }}>
       <Text style={globalStyles.sectionTitle}>Recent Meals</Text>
-      <MealItem name="Chicken & Rice" calories={540} protein={45} carbs={50} fat={12} />
-      <MealItem name="Protein Shake" calories={280} protein={30} carbs={20} fat={8} />
-      <MealItem name="Salmon Salad" calories={430} protein={35} carbs={10} fat={25} />
+      {meals.length === 0 ? (
+        <Text style={globalStyles.empty}>No meals logged yet.</Text>
+      ) : (
+        meals.map(meal => (
+          <MealItem
+            key={meal.id}
+            name={meal.name}
+            calories={meal.calories}
+            protein={meal.protein}
+            carbs={meal.carbs}
+            fat={meal.fat}
+          />
+        ))
+      )}
     </View>
   )
 }
