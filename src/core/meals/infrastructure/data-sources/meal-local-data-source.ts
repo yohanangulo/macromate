@@ -5,7 +5,7 @@ export interface MealLocalDataSource {
 
   getAll: () => Promise<MealModel[]>
 
-  getById: (id: string) => Promise<MealModel>
+  getById: (id: string) => Promise<MealModel | null>
 
   delete: (id: string) => Promise<void>
 

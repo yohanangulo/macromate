@@ -22,11 +22,13 @@ export class OfflineFirstMealRepositoryImpl implements MealRepository {
   }
 
   async getAll(): Promise<MealEntity[]> {
-    return this.mealLocalDataSource.getAll()
+    const models = await this.mealLocalDataSource.getAll()
+    return models.map(mealsMapper.toEntity)
   }
 
-  async getById(id: string): Promise<MealEntity> {
-    return this.mealLocalDataSource.getById(id)
+  async getById(id: string): Promise<MealEntity | null> {
+    const model = await this.mealLocalDataSource.getById(id)
+    return model ? mealsMapper.toEntity(model) : null
   }
 
   async delete(id: string): Promise<void> {

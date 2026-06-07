@@ -11,16 +11,15 @@ export class MealLocalDataSourceImpl implements MealLocalDataSource {
   }
 
   async getAll(): Promise<MealModel[]> {
-    return this.db.select().from(mealsTable)
+    return this.db.select().from(mealsTable).where(eq(mealsTable.isDeleted, false))
   }
 
-  async getById(id: string): Promise<MealModel> {
-    const meal = await this.db
-      .select()
-      .from(mealsTable)
-      .where(eq(mealsTable.id, id))
-      .limit(1)
-      .then(result => result[0])
+  async getById(id: string): Promise<MealModel | null> {
+    const meal = await this.db.query.mealsTable.findFirst({
+      where: eq(mealsTable.id, id),
+    })
+
+    if (!meal) return null
 
     return meal
   }
