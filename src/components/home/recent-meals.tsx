@@ -20,6 +20,7 @@ export default function RecentMeals() {
             protein={meal.protein}
             carbs={meal.carbs}
             fat={meal.fat}
+            id={meal.id}
           />
         ))
       )}

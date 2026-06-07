@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
-
+import { colors } from '@/common/style/globals'
+import { deleteMeal } from '@/di/container'
+import { Alert, StyleSheet, Text, TouchableOpacity } from 'react-native'
 type MealItemProps = {
+  id: string
   name: string
   calories: number
   protein: number
@@ -8,20 +10,33 @@ type MealItemProps = {
   fat: number
 }
 
-export default function MealItem({ name, calories, protein, carbs, fat }: MealItemProps) {
+export default function MealItem({ id, name, calories, protein, carbs, fat }: MealItemProps) {
+  const handleLongPress = () => {
+    Alert.alert('Delete Meal', `Are you sure you want to delete "${name}"?`, [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          await deleteMeal(id)
+        },
+      },
+    ])
+  }
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onLongPress={handleLongPress}>
       <Text style={styles.name}>{name}</Text>
       <Text style={styles.macros}>
-        {calories} cal • {protein}g P • {carbs}g C • {fat}g F{' '}
+        {calories} cal • {protein}g P • {carbs}g C • {fat}g F
       </Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#16213e',
+    backgroundColor: colors.surface,
     borderRadius: 10,
     padding: 16,
     marginBottom: 10,
@@ -29,11 +44,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#ffffff',
+    color: colors.text,
   },
   macros: {
     fontSize: 13,
-    color: '#a0a0b0',
+    color: colors.textSecondary,
     marginTop: 4,
   },
 })
