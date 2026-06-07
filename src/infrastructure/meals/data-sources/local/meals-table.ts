@@ -11,6 +11,10 @@ export const mealsTable = sqliteTable('meals', {
   synced: int('synced', { mode: 'boolean' }).notNull().default(false),
   isDeleted: int('is_deleted', { mode: 'boolean' }).notNull().default(false),
 
-  createdAt: int('created_at', { mode: 'timestamp' }).notNull(),
-  updatedAt: int('updated_at', { mode: 'timestamp' }).notNull(),
+  createdAt: int('created_at', { mode: 'timestamp_ms' })
+    .notNull()
+    .$defaultFn(() => new Date()),
+  updatedAt: int('updated_at', { mode: 'timestamp_ms' })
+    .notNull()
+    .$defaultFn(() => new Date()),
 })
