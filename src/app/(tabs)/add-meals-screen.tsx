@@ -27,7 +27,7 @@ export default function AddMealScreen() {
     try {
       await addMeal.execute(data)
       reset()
-      router.navigate('/meals-screen')
+      router.navigate('/')
     } catch (e) {
       Alert.alert('Error', 'Could not save the meal. Please try again.')
     }

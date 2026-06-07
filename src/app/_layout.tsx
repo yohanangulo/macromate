@@ -1,12 +1,14 @@
 import { colors } from '@/common/style/globals'
-import { db } from '@/infrastructure/db/client'
+import { db, expoDb } from '@/infrastructure/db/client'
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator'
+import { useDrizzleStudio } from 'expo-drizzle-studio-plugin'
 import { Stack } from 'expo-router'
 import { ActivityIndicator, Text, View } from 'react-native'
 import migrations from '../../drizzle/migrations'
 
 export default function RootLayout() {
   const { error, success } = useMigrations(db, migrations)
+  useDrizzleStudio(expoDb)
 
   if (error)
     return (
