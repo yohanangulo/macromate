@@ -25,10 +25,17 @@ export class MealLocalDataSourceImpl implements MealLocalDataSource {
   }
 
   async delete(id: string): Promise<void> {
-    await this.db.update(mealsTable).set({ isDeleted: true, updatedAt: new Date() }).where(eq(mealsTable.id, id))
+    await this.db.update(mealsTable).set({ isDeleted: true, updatedAt: new Date(), synced: false }).where(eq(mealsTable.id, id))
   }
 
   async markAsSynced(id: string): Promise<void> {
     await this.db.update(mealsTable).set({ synced: true }).where(eq(mealsTable.id, id))
+  }
+
+  async clearAll(): Promise<void> {
+    await this.db
+      .update(mealsTable)
+      .set({ isDeleted: true, updatedAt: new Date(), synced: false })
+      .where(eq(mealsTable.isDeleted, false))
   }
 }

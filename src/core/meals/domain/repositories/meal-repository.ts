@@ -8,4 +8,6 @@ export interface MealRepository {
   getById: (id: string) => Promise<MealEntity | null>
 
   delete: (id: string) => Promise<void>
+
+  clearAll: () => Promise<void>
 }

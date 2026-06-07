@@ -1,4 +1,5 @@
 export * from './add-meal'
+export * from './clear-all-meals'
 export * from './delete-meal'
 export * from './get-all-meals'
 export * from './get-meal-by-id'

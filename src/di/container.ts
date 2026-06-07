@@ -11,3 +11,4 @@ const idGenerator = new ExpoIdGenerator()
 
 export const addMeal = mealUseCases.addMeal(mealsRepository, idGenerator)
 export const deleteMeal = mealUseCases.deleteMeal(mealsRepository)
+export const clearAllMeals = mealUseCases.clearAllMeals(mealsRepository)

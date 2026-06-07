@@ -10,4 +10,6 @@ export interface MealLocalDataSource {
   delete: (id: string) => Promise<void>
 
   markAsSynced: (id: string) => Promise<void>
+
+  clearAll: () => Promise<void>
 }

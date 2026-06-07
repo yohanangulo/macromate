@@ -35,4 +35,8 @@ export class OfflineFirstMealRepositoryImpl implements MealRepository {
     await this.mealLocalDataSource.delete(id)
     // await this.mealRemoteDataSource.delete(id)
   }
+
+  async clearAll(): Promise<void> {
+    await this.mealLocalDataSource.clearAll()
+  }
 }

@@ -19,4 +19,6 @@ export class OnlineMealRepositoryImpl implements MealRepository {
   async delete(id: string): Promise<void> {
     await this.mealRemoteDataSource.delete(id)
   }
+
+  async clearAll(): Promise<void> {}
 }
