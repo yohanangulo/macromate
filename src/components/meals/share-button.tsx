@@ -1,4 +1,5 @@
 import { colors } from '@/common/style/globals'
+import { buildSummaryTotal } from '@/core/shared/helpers'
 import { useWatchMealsTotals } from '@/hooks/meals/use-watch-meals-totals'
 import { Ionicons } from '@expo/vector-icons'
 import { Share, TouchableOpacity } from 'react-native'
@@ -6,9 +7,7 @@ import { Share, TouchableOpacity } from 'react-native'
 export default function ShareButton() {
   const { totals } = useWatchMealsTotals()
   const handleShare = async () => {
-    await Share.share({
-      message: `MacroZone Summary\n\nCalories: ${totals.calories}\nProtein: ${totals.protein}g\nCarbs: ${totals.carbs}g\nFat: ${totals.fat}g\n\nMeals: ${totals.totalMeals} logged`,
-    })
+    await Share.share({ message: buildSummaryTotal(totals) })
   }
 
   return (
