@@ -1,9 +1,13 @@
-import { MealEntity } from '../../domain'
+import { MealModel } from '../models/meal-model'
 
 export interface MealLocalDataSource {
-  save: (meal: MealEntity) => Promise<void>
+  save: (meal: MealModel) => Promise<void>
 
-  getAll: () => Promise<MealEntity[]>
+  getAll: () => Promise<MealModel[]>
+
+  getById: (id: string) => Promise<MealModel>
 
   delete: (id: string) => Promise<void>
+
+  markAsSynced: (id: string) => Promise<void>
 }
