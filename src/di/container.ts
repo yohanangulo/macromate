@@ -1,4 +1,4 @@
-import { AddMeal } from '@/core/meals/application'
+import * as mealUseCases from '@/core/meals/application'
 import { db } from '@/infrastructure/db/client'
 import { ExpoIdGenerator } from '@/infrastructure/expo-id-generator'
 import { http } from '@/infrastructure/http-client'
@@ -9,4 +9,5 @@ export const mealsRepository = new OfflineFirstMealRepositoryImpl(new MealLocalD
 
 const idGenerator = new ExpoIdGenerator()
 
-export const addMeal = new AddMeal(mealsRepository, idGenerator)
+export const addMeal = mealUseCases.addMeal(mealsRepository, idGenerator)
+export const deleteMeal = mealUseCases.deleteMeal(mealsRepository)

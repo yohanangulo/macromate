@@ -9,17 +9,12 @@ export type AddMealProps = {
   fat: number
 }
 
-export class AddMeal {
-  constructor(
-    private mealRepository: MealRepository,
-    private idGenerator: IdGenerator,
-  ) {}
-
-  async execute(input: AddMealProps): Promise<void> {
+export function addMeal(mealRepository: MealRepository, idGenerator: IdGenerator) {
+  return async (input: AddMealProps) => {
     const now = new Date()
 
     const meal = new MealEntity({
-      id: this.idGenerator.generate(),
+      id: idGenerator.generate(),
       name: input.name,
       calories: input.calories,
       protein: input.protein,
@@ -29,6 +24,6 @@ export class AddMeal {
       updatedAt: now,
     })
 
-    await this.mealRepository.save(meal)
+    await mealRepository.save(meal)
   }
 }

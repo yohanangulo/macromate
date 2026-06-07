@@ -1,9 +1,5 @@
 import { MealRepository } from '../domain'
 
-export class GetMealById {
-  constructor(private mealRepository: MealRepository) {}
-
-  async execute(id: string) {
-    return this.mealRepository.getById(id)
-  }
+export function getMealById(mealRepository: MealRepository) {
+  return (id: string) => mealRepository.getById(id)
 }

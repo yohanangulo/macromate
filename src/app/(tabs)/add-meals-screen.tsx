@@ -25,7 +25,7 @@ export default function AddMealScreen() {
 
   const handleAddMeal = async (data: AddMealOutputSchema) => {
     try {
-      await addMeal.execute(data)
+      await addMeal(data)
       Alert.alert('Success', 'Meal added successfully')
       reset()
       router.navigate('/')
