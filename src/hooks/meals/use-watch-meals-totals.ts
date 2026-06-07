@@ -1,6 +1,6 @@
 import { db } from '@/infrastructure/db/client'
 import { mealsTable } from '@/infrastructure/db/schema'
-import { eq, sum } from 'drizzle-orm'
+import { count, eq, sum } from 'drizzle-orm'
 import { useLiveQuery } from 'drizzle-orm/expo-sqlite'
 
 const columns = {
@@ -8,6 +8,7 @@ const columns = {
   protein: sum(mealsTable.protein),
   carbs: sum(mealsTable.carbs),
   fat: sum(mealsTable.fat),
+  totalMeals: count(mealsTable.id),
 }
 
 export function useWatchMealsTotals() {
@@ -15,7 +16,7 @@ export function useWatchMealsTotals() {
 
   if (!data.at(0))
     return {
-      totals: { calories: 0, protein: 0, carbs: 0, fat: 0 },
+      totals: { calories: 0, protein: 0, carbs: 0, fat: 0, totalMeals: 0 },
       error,
     }
 
@@ -27,6 +28,7 @@ export function useWatchMealsTotals() {
       protein: Number(totals.protein),
       carbs: Number(totals.carbs),
       fat: Number(totals.fat),
+      totalMeals: Number(totals.totalMeals),
     },
     error,
   }
