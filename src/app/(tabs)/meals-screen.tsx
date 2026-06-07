@@ -1,5 +1,5 @@
 import { globalStyles } from '@/common/style/globals'
-import MealItem from '@/components/home/meal-item'
+import MealItem from '@/components/meals/meal-item'
 import { clearAllMeals } from '@/di/container'
 import { useWatchMeals } from '@/hooks/meals/use-watch-meals'
 import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'

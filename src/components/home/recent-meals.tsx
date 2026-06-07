@@ -2,7 +2,7 @@ import { dimens } from '@/common/dimens'
 import { globalStyles } from '@/common/style/globals'
 import { useWatchRecentMeals } from '@/hooks/meals/use-watch-recent-meals'
 import { Text, View } from 'react-native'
-import MealItem from './meal-item'
+import MealItem from '../meals/meal-item'
 
 export default function RecentMeals() {
   const { meals } = useWatchRecentMeals()
