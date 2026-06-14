@@ -9,7 +9,7 @@ export type AddMealProps = {
   fat: number
 }
 
-export function addMeal(mealRepository: MealRepository, idGenerator: IdGenerator) {
+export function createAddMealUseCase(mealRepository: MealRepository, idGenerator: IdGenerator) {
   return async (input: AddMealProps) => {
     const now = new Date()
 

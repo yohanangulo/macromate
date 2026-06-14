@@ -1,4 +1,4 @@
-import * as mealUseCases from '@/core/meals/application'
+import { createAddMealUseCase, createClearAllMealsUseCase, createDeleteMealUseCase } from '@/core/meals/application'
 import { db } from '@/infrastructure/db/client'
 import { ExpoIdGenerator } from '@/infrastructure/expo-id-generator'
 import { http } from '@/infrastructure/http-client'
@@ -9,6 +9,6 @@ export const mealsRepository = new OfflineFirstMealRepositoryImpl(new MealLocalD
 
 const idGenerator = new ExpoIdGenerator()
 
-export const addMeal = mealUseCases.addMeal(mealsRepository, idGenerator)
-export const deleteMeal = mealUseCases.deleteMeal(mealsRepository)
-export const clearAllMeals = mealUseCases.clearAllMeals(mealsRepository)
+export const addMeal = createAddMealUseCase(mealsRepository, idGenerator)
+export const deleteMeal = createDeleteMealUseCase(mealsRepository)
+export const clearAllMeals = createClearAllMealsUseCase(mealsRepository)
