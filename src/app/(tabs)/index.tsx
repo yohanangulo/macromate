@@ -11,7 +11,7 @@ export default function HomeScreen() {
   return (
     <ScrollView style={globalStyles.container}>
       <View style={globalStyles.header}>
-        <Text style={globalStyles.title}>MacroZone</Text>
+        <Text style={globalStyles.title}>MacroMate</Text>
         <ShareButton />
       </View>
       <HomeHeader />

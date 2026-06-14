@@ -50,7 +50,7 @@ export async function scheduleMealReminders() {
 
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: 'MacroZone',
+      title: 'MacroMate',
       body: "Don't forget to log your lunch!",
     },
     trigger: {
@@ -63,7 +63,7 @@ export async function scheduleMealReminders() {
 
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: 'MacroZone',
+      title: 'MacroMate',
       body: 'Time to log your dinner!',
     },
     trigger: {
