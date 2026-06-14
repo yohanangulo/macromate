@@ -8,13 +8,11 @@ type UpdateMealProps = {
   fat?: number
 }
 
-export class UpdateMeal {
-  constructor(private mealRepository: MealRepository) {}
-
-  async execute(id: string, { calories, carbs, fat, name, protein }: UpdateMealProps): Promise<void> {
+export function createUpdateMealUseCase(mealRepository: MealRepository) {
+  return async (id: string, { calories, carbs, fat, name, protein }: UpdateMealProps): Promise<void> => {
     const now = new Date()
 
-    const meal = await this.mealRepository.getById(id)
+    const meal = await mealRepository.getById(id)
 
     if (meal === null) throw new Error('Meal not found')
 
@@ -25,6 +23,6 @@ export class UpdateMeal {
     if (fat !== undefined) meal.fat = fat
     meal.updatedAt = now
 
-    await this.mealRepository.save(meal)
+    await mealRepository.save(meal)
   }
 }
