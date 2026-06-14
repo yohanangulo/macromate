@@ -3,6 +3,7 @@ import MacroGrid from '@/components/home/macro-grid'
 import RecentMeals from '@/components/home/recent-meals'
 import CopyButton from '@/components/meals/copy-button'
 import ShareButton from '@/components/meals/share-button'
+import ReminderToggle from '@/components/notifications/reminder-toggle'
 import { ScrollView, Text, View } from 'react-native'
 import HomeHeader from '../../components/home/home-header'
 
@@ -16,6 +17,7 @@ export default function HomeScreen() {
       <HomeHeader />
       <MacroGrid />
       <CopyButton />
+      <ReminderToggle />
       <RecentMeals />
     </ScrollView>
   )
