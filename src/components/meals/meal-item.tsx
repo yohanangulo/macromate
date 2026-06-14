@@ -1,5 +1,6 @@
 import { colors } from '@/common/style/globals'
 import { deleteMeal } from '@/di/container'
+import { router } from 'expo-router'
 import { Alert, StyleSheet, Text, TouchableOpacity } from 'react-native'
 type MealItemProps = {
   id: string
@@ -26,8 +27,15 @@ export default function MealItem({ id, name, calories, protein, carbs, fat, onDe
     ])
   }
 
+  const handlePress = () => {
+    router.push({
+      pathname: '/meal/[id]',
+      params: { id },
+    })
+  }
+
   return (
-    <TouchableOpacity style={styles.container} onLongPress={handleLongPress}>
+    <TouchableOpacity style={styles.container} onLongPress={handleLongPress} onPress={handlePress}>
       <Text style={styles.name}>{name}</Text>
       <Text style={styles.macros}>
         {calories} cal • {protein}g P • {carbs}g C • {fat}g F

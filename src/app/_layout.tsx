@@ -29,6 +29,16 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="meal/[id]"
+          options={{
+            headerShown: false,
+            presentation: 'formSheet',
+            sheetGrabberVisible: true,
+            sheetAllowedDetents: 'fitToContents',
+            contentStyle: { backgroundColor: colors.background },
+          }}
+        />
       </Stack>
     </Providers>
   )

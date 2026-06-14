@@ -2,6 +2,7 @@ import {
   createAddMealUseCase,
   createClearAllMealsUseCase,
   createDeleteMealUseCase,
+  createGetMealByIdUseCase,
   createUpdateMealUseCase,
 } from '@/core/meals/application'
 import { db } from '@/infrastructure/db/client'
@@ -18,3 +19,4 @@ export const addMeal = createAddMealUseCase(mealsRepository, idGenerator)
 export const deleteMeal = createDeleteMealUseCase(mealsRepository)
 export const clearAllMeals = createClearAllMealsUseCase(mealsRepository)
 export const updateMeal = createUpdateMealUseCase(mealsRepository)
+export const getMealById = createGetMealByIdUseCase(mealsRepository)
