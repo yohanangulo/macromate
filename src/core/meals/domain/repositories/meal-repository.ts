@@ -1,13 +1,13 @@
 import { MealEntity } from '../entities/meals-entity'
 
-export interface MealRepository {
-  save: (meal: MealEntity) => Promise<void>
+export abstract class MealRepository {
+  abstract save(meal: MealEntity): Promise<void>
 
-  getAll: () => Promise<MealEntity[]>
+  abstract getAll(): Promise<MealEntity[]>
 
-  getById: (id: string) => Promise<MealEntity | null>
+  abstract getById(id: string): Promise<MealEntity | null>
 
-  delete: (id: string) => Promise<void>
+  abstract delete(id: string): Promise<void>
 
-  clearAll: () => Promise<void>
+  abstract clearAll(): Promise<void>
 }
