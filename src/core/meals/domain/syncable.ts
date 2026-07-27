@@ -1,6 +1,6 @@
 export type ConflictResolved = 'remote' | 'local'
 
-export function resloveConflictLWW({
+export function resolveConflictLWW({
   localUpdatedAt,
   remoteUpdatedAt,
 }: {
