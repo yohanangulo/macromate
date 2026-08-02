@@ -10,7 +10,7 @@ export function useWatchRecentMeals(limit: number = 5) {
   const { data: recentMeals, error } = useLiveQuery(q)
 
   return {
-    meals: recentMeals.map(mealsMapper.toEntity),
+    meals: recentMeals.map(mealsMapper.fromModel),
     error,
   }
 }

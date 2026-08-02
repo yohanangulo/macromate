@@ -38,4 +38,10 @@ export class MealLocalDataSourceImpl implements MealLocalDataSource {
       .set({ isDeleted: true, updatedAt: new Date(), synced: false })
       .where(eq(mealsTable.isDeleted, false))
   }
+
+  async getUnsynced(): Promise<MealModel[]> {
+    const unsynced = await this.db.select().from(mealsTable).where(eq(mealsTable.synced, false))
+
+    return unsynced
+  }
 }

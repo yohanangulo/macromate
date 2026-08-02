@@ -16,7 +16,7 @@ export function useWatchMeals(): QueryResult {
   )
 
   return {
-    meals: meals.map(mealsMapper.toEntity),
+    meals: meals.map(mealsMapper.fromModel),
     error,
   }
 }

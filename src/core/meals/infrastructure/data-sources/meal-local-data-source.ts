@@ -12,4 +12,6 @@ export interface MealLocalDataSource {
   markAsSynced: (id: string) => Promise<void>
 
   clearAll: () => Promise<void>
+
+  getUnsynced(): Promise<MealModel[]>
 }

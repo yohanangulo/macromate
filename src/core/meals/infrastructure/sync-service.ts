@@ -1,11 +1,11 @@
-import { MealRemoteDataSource } from './data-sources/http-meal-remote-data-source'
-import { MealLocalDataSource } from './data-sources/meal-local-data-source'
+import { Syncable } from '../domain/syncable'
 
 export class SyncService {
-  constructor(
-    private mealLocalDataSource: MealLocalDataSource,
-    private mealRemoteDataSource: MealRemoteDataSource,
-  ) {}
+  constructor(private syncables: Syncable[]) {}
 
-  async sync(): Promise<void> {}
+  async sync(): Promise<void> {
+    for (const syncable of this.syncables) {
+      await syncable.sync()
+    }
+  }
 }

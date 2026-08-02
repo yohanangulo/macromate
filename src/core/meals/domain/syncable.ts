@@ -12,12 +12,6 @@ export function resolveConflictLWW({
   return 'local'
 }
 
-export abstract class Syncable<T> {
-  abstract getUnsynced(): Promise<T[]>
-
-  abstract upsertSynced(syncables: T[]): Promise<T[]>
-
-  abstract markAsSynced(syncables: T[]): Promise<T[]>
-
+export abstract class Syncable {
   abstract sync(): Promise<void>
 }
