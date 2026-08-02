@@ -39,10 +39,12 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "expo-drizzle-studio-plugin": "^0.2.1",
     "@types/react": "~19.2.2",
     "babel-plugin-inline-import": "^3.0.0",
     "drizzle-kit": "^0.31.10",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~56.0.4",
+    "expo-drizzle-studio-plugin": "^0.2.1",
     "typescript": "~6.0.3"
   },
   "scripts": {
