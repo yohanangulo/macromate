@@ -1,5 +1,6 @@
 import { Providers } from '@/common/providers/providers'
 import { colors } from '@/common/style/globals'
+import { useSync } from '@/hooks/sync/use-sync'
 import { db, expoDb } from '@/infrastructure/db/client'
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator'
 import { useDrizzleStudio } from 'expo-drizzle-studio-plugin'
@@ -10,6 +11,7 @@ import migrations from '../../drizzle/migrations'
 export default function RootLayout() {
   const { error, success } = useMigrations(db, migrations)
   useDrizzleStudio(expoDb)
+  useSync({ enabled: success })
 
   if (error)
     return (
