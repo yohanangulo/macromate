@@ -15,7 +15,7 @@ export default function RootLayout() {
 
   if (error)
     return (
-      <View>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>An error occurred</Text>
       </View>
     )
